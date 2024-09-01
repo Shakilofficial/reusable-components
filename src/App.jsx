@@ -80,7 +80,7 @@ function App() {
           <h2 className="text-xl font-semibold mb-4">Notifications/Toasts</h2>
           {isNotificationVisible && (
             <Toast
-              variant="success"
+              variant="info"
               message="This is a success notification!"
               onClose={handleNotificationClose}
             />

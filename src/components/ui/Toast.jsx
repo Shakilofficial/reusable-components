@@ -41,7 +41,7 @@ const Toast = ({
       <div className="ml-3">
         <p className="text-sm text-gray-700 dark:text-gray-300">{message}</p>
       </div>
-      <button onClick={onClose} className="ml-4">
+      <button onClick={onClose} className="ml-4 bg-gray-300 p-1 rounded-full">
         <XMarkIcon className="h-5 w-5 text-gray-700 dark:text-gray-300" />
       </button>
     </motion.div>
