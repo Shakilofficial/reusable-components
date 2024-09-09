@@ -1,5 +1,7 @@
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import ReusableModal from "./components/headlessUi/ReusableModal";
+import SignUpModal from "./components/headlessUi/SignUpModal";
 import Avatar from "./components/ui/Avatar";
 import Button from "./components/ui/Button";
 import Card from "./components/ui/Card";
@@ -10,7 +12,9 @@ import Toast from "./components/ui/Toast";
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isNotificationVisible, setNotificationVisible] = useState(true);
-
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const openSignUpModal = () => setIsSignUpModalOpen(true);
+  const closeSignUpModal = () => setIsSignUpModalOpen(false);
   const handleModalClose = () => setModalOpen(false);
   const handleNotificationClose = () => setNotificationVisible(false);
 
@@ -18,7 +22,14 @@ function App() {
     <>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-8">
         <h1 className="text-2xl font-bold mb-8">UI Components Showcase</h1>
+        <button
+          onClick={openSignUpModal}
+          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+        >
+          Open Sign Up
+        </button>
 
+        <SignUpModal isOpen={isSignUpModalOpen} onClose={closeSignUpModal} />
         {/* Buttons */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Buttons</h2>
@@ -104,6 +115,13 @@ function App() {
           />
         </div>
       </div>
+      <ReusableModal
+        title="Payment successful"
+        content="Your payment has been successfully submitted. We’ve sent you an email with all of the details of your order."
+        triggerText="Open Dialog"
+        buttonText="Got it, thanks!"
+        onClose={() => console.log("Modal closed")}
+      />
     </>
   );
 }
